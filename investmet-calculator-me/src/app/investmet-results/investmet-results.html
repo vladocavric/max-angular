@@ -1,4 +1,11 @@
 <table>
+    @if(results().length === 0) {
+    <tbody>
+        <tr>
+            <td colspan="5">Please enter some values and press "Calculate"</td>
+        </tr>
+    </tbody>
+    } @else {
     <thead>
         <tr>
             <th>Year</th>
@@ -9,7 +16,8 @@
         </tr>
     </thead>
     <tbody>
-        @for (item of dummyData; track item.year) {
+
+        @for (item of results(); track item.year) {
         <tr>
             <td>{{ item.year }}</td>
             <td>{{ item.valueEndOfYear | currency:'USD':'symbol':'1.2-2' }}</td>
@@ -18,5 +26,5 @@
             <td>{{ item.annualInvestment | currency:'USD':'symbol':'1.2-2' }}</td>
         </tr>
         }
-    </tbody>
+    </tbody>}
 </table>

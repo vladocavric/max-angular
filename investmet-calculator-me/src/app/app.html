@@ -1,3 +1,3 @@
 <app-header />
-<app-user-input />
-<app-investmet-results />
+<app-user-input (calculationSubmitted)="onCalculationSubmitted()" />
+<app-investmet-results [results]="results()" />

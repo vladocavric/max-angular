@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "investment-calculator-me": {
+    "investmet-calculator-me": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "investment-calculator-me:build:production"
+              "buildTarget": "investmet-calculator-me:build:production"
             },
             "development": {
-              "buildTarget": "investment-calculator-me:build:development"
+              "buildTarget": "investmet-calculator-me:build:development"
             }
           },
           "defaultConfiguration": "development"

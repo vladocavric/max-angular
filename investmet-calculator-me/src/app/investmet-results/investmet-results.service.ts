@@ -28,8 +28,6 @@ export class InvestmetResultsService {
 
     this.results = annualData;
 
-    console.log('Calculated Results from service:', this.results);
-
   }
 
   getResults() {

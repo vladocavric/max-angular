@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, input, ViewEncapsulation, inject, ElementRef } from '@angular/core';
+import { Component, HostBinding, HostListener, input, ViewEncapsulation, inject, ElementRef, ContentChild, contentChild, afterNextRender, afterRender } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -19,9 +19,23 @@ export class ControlComponent {
   // }
   label = input.required()
   private el = inject(ElementRef)
+  // @ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>;
+  private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input')
+  constructor() {
+    afterNextRender(() => {
+      console.log('afterNextRender')
+    })
+
+    afterRender(() => {
+      console.log('afterRender')
+    })
+
+    // this hook is after Angular 20 afterEveryRender
+  }
 
   onClick() {
     console.log('nesto divlje')
     console.log(this.el)
+    console.log(this.control()?.nativeElement.value)
   }
 }

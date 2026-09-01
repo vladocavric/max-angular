@@ -4,13 +4,18 @@
       <img src="temp-icon.png" alt="Thermometer icon" />
       <div>
         <h2>Current Temperatures</h2>
-        <p>{{ currentDate }}</p>
+        <p>{{ currentDate | date:'medium' }}</p>
       </div>
     </header>
-    <p>New York: {{ currentTemperaturs.newYork }}</p>
-    <p>Berlin: {{ currentTemperaturs.berlin }}</p>
-    <p>Paris: {{ currentTemperaturs.paris }}</p>
-    <p>Chicago: {{ currentTemperaturs.chicago }}</p>
+    <!-- <p>New York: {{ currentTemperaturs.newYork | number:'1.2-2' | temperature:'fahrenheit':'celsius' }}</p>
+    <p>Berlin: {{ currentTemperaturs.berlin | number:'1.2-2' | temperature:'fahrenheit':'celsius' }}</p>
+    <p>Paris: {{ currentTemperaturs.paris | number:'1.2-2' | temperature:'fahrenheit':'celsius' }}</p>
+    <p>Chicago: {{ currentTemperaturs.chicago | number:'1.2-2' | temperature:'fahrenheit':'celsius' }}</p> -->
+
+    <p>New York: {{ currentTemperaturs.newYork | temperature:'fahrenheit':'celsius' }}</p>
+    <p>Berlin: {{ currentTemperaturs.berlin | temperature:'fahrenheit':'celsius' }}</p>
+    <p>Paris: {{ currentTemperaturs.paris | temperature:'fahrenheit':'celsius' }}</p>
+    <p>Chicago: {{ currentTemperaturs.chicago | temperature:'fahrenheit':'celsius' }}</p>
   </article>
 
   <article class="temperatures">
@@ -22,8 +27,8 @@
       </div>
     </header>
     <ul>
-      @for (temperature of historicTemperatures; track temperature) {
-      <li (click)="onReset($index)">{{ temperature }}</li>
+      @for (temperature of historicTemperatures |sort:'desc'; track temperature) {
+      <li (click)="onReset($index)">{{ temperature |temperature:'celsius' }}</li>
       }
     </ul>
   </article>

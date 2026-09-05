@@ -1,0 +1,25 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <h2>Login</h2>
+
+  <div class="control-row">
+    <div class="control no-margin">
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" ngModel required email #emailControl="ngModel" />
+    </div>
+
+    <div class="control no-margin">
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" ngModel required minlength="6" #passwordControl="ngModel" />
+    </div>
+
+    <button class="button">Login</button>
+  </div>
+
+  @if(emailControl.touched && emailControl.dirty && emailControl.invalid){
+  <p class="control-error">Invalid email address.</p>
+  }
+
+  @if(passwordControl.touched && passwordControl.dirty && passwordControl.invalid){
+  <p class="control-error">Password must be at least 6 characters long.</p>
+  }
+</form>
